@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		
+		<!-- 2 配置hibernate信息  可选的-->
+		<!-- 配置数据库方言
+			mysql实现分页 limit关键字，只是mysql里面能使用，让hibernate识别到mysql的limit的关键字
+			oracle实现分页 rownum关键
+		 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>	
+		<!-- 显示hibernate底层生成的sql语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- 格式化sql语句 -->
+		<property name="hibernate.format_sql">true</property>
+		<!-- hibernate根据映射创建数据库表
+			update: 如果已经创建表，进行更新，如果没有表，给创建
+		 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 3 引入映射配置文件 必须的-->
+		<mapping resource="cn/itcast/entity/User.hbm.xml"/>
+		<mapping resource="cn/itcast/entity/Customer.hbm.xml"/>
+		<mapping resource="cn/itcast/entity/LinkMan.hbm.xml"/>
+		<mapping resource="cn/itcast/entity/Visit.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
